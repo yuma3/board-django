@@ -1,0 +1,25 @@
+{% extends 'board/base.html' %}
+{% load static %}
+
+{% block customcss %}
+  <link rel="stylesheet" href="{% static 'board/css/main.css' %}">
+{% endblock customcss %}
+
+{% block contents %}
+
+<div class="panel">
+  <form action="" method="POST">
+    {% csrf_token %}
+
+       {{ form.name }}
+       {{ form.age }}
+       {{ form.league }}
+       {{ form.club }}
+       {{ form.position }}
+       {{ form.feature }}
+
+    <input type="submit" value="Update">
+  </form>
+</div>
+
+{% endblock contents %}

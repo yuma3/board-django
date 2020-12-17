@@ -1,0 +1,58 @@
+{% extends 'board/base.html' %}
+{% load static %}
+ {% block customcss %}
+  <link rel="stylesheet" href="{% static 'board/css/list.css' %}">
+ {% endblock customcss %}
+<body>
+  {% block contents %}
+
+  <main class="directory">
+    <div class="container">
+      <h3 class="title">Players List</h3>
+
+      <nav>
+
+        <ul class="league">
+          <li class="btn btn-outline-warning liga"><a href="{% url 'board:list_liga' %}" >Liga</a></li>
+          <li class="btn btn-outline-primary premier"><a href="{% url 'board:list_premier' %}" >Premier</a></li>
+          <li class="btn btn-outline-success serie"><a href="{% url 'board:list_serie' %}" >SerieA</a></li>
+          <li class="btn btn-outline-danger bundes"><a href="{% url 'board:list_bundes' %}" >Bundes</a></li>
+          <li class="btn btn-outline-info ligue"><a href="{% url 'board:list_ligue' %}" >Ligue1</a></li>
+        </ul>
+
+      </nav>
+      
+      <h4 class="subtitle">{{ league }}</h4>
+
+      <div class="grid">
+
+        {% for player in player_list %}
+        <div class="panel">
+        <h5 class="name"><a href="{% url 'board:detail' player.pk %}">{{ player.name }}</a></h5>
+        <ul class="itemlist">
+          <!-- {% if player.image %}
+          <div class="img">
+            <li><img src="{{ player.image.url }}" width="100" height="100"></li>
+          </div>
+          {% endif %} -->
+          <div class="info">
+            <li class="nation">{{player.nation }}</li>
+            <li class="club">{{ player.club }}</li>
+            <li class="age">{{ player.age }}</li>
+            <li class="position">{{ player.position }}</li>
+            <li><a href="{% url 'board:update' player.pk %}">更新</a></li>
+          </div>
+        </ul>
+      </div>
+      {% endfor %}
+
+
+
+    </div>
+<!-- <a href="{% url 'board:logout' %}">logout</a> -->
+  </div>
+  </main>
+
+  {% endblock contents %}
+</body>
+</html>

@@ -1,0 +1,20 @@
+{% extends 'board/base.html' %}
+{% load static %}
+
+{% block customcss %}
+ <link rel="stylesheet" href="{% static 'board/css/sub.css' %}">
+  <link rel="stylesheet" href="{% static 'board/css/main.css' %}">
+{% endblock customcss %}
+
+{% block contents %}
+
+<div class="panel">
+  {{form.as_p}}
+  <form action="" method="POST">
+    {% csrf_token %}
+
+    <input type="submit" value="Delete">
+  </form>
+</div>
+
+{% endblock contents %}

@@ -1,0 +1,26 @@
+{% extends 'board/base.html' %}
+{% load static %}
+
+{% block customcss %}
+  <link rel="stylesheet" href="{% static 'board/css/main.css' %}">
+{% endblock customcss %}
+
+{% block contents %}
+
+<div class="panel">
+  <h5 class="name">{{ player.name }}</h5>
+  <ul class="itemlist">
+    {% if player.image %}
+    <div class="img">
+      <li class="img"><img src="{{ player.image.url }}"></li>
+    </div>
+    {% endif %}
+    <div class="info">
+      <li class="age">{{ player.age }}</li>
+      <li class="club">{{ player.club }}</li>
+      <li class="nation">{{player.nation }}</li>
+    </div>
+  </ul>
+</div>
+
+{% endblock contents %}
